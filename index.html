@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>米子空き家相談サポートセンター｜空き家の相談・見守り・売却/解体のご案内</title>
+  <meta name="description" content="米子市周辺の空き家のお悩みを整理し、必要に応じて売却・解体・活用の専門家へつなぐ相談窓口です。遠方オーナーの見守りにも対応。" />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --bg2:#0f1a2e;
+      --card:#0f1b33;
+      --text:#e8eefc;
+      --muted:#b8c5e6;
+      --line:rgba(255,255,255,.12);
+      --accent:#64b5ff;
+      --accent2:#7ef0d6;
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0; padding:0; font-family: system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif; background: radial-gradient(1200px 600px at 20% -10%, rgba(100,181,255,.25), transparent 60%),
+                                                    radial-gradient(900px 600px at 80% 10%, rgba(126,240,214,.18), transparent 60%),
+                                                    linear-gradient(180deg, var(--bg), var(--bg2)); color:var(--text)}
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:0 18px}
+    .pill{display:inline-flex; gap:10px; align-items:center; padding:10px 14px; border:1px solid var(--line); border-radius:999px; background: rgba(255,255,255,.04)}
+    .btn{display:inline-flex; gap:10px; align-items:center; justify-content:center; padding:12px 16px; border-radius:12px; border:1px solid var(--line); background:rgba(255,255,255,.06); cursor:pointer}
+    .btn.primary{background: linear-gradient(90deg, rgba(100,181,255,.95), rgba(126,240,214,.85)); color:#07101f; border:none; font-weight:700}
+    .btn:hover{transform: translateY(-1px)}
+    .grid{display:grid; gap:16px}
+    .card{background: rgba(255,255,255,.04); border:1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow)}
+    .card.pad{padding:18px}
+    .muted{color:var(--muted)}
+    .h2{font-size:26px; margin:0 0 12px}
+    .h3{font-size:18px; margin:0 0 8px}
+    .small{font-size:13px}
+    .section{padding:64px 0}
+    .section.slim{padding:44px 0}
+    .divider{height:1px; background: var(--line); margin:16px 0}
+    .tag{display:inline-block; font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid var(--line); background: rgba(255,255,255,.04); color:var(--muted)}
+    .kicker{letter-spacing:.08em; text-transform:uppercase; font-size:12px; color:var(--muted)}
+    /* header */
+    header{position:sticky; top:0; z-index:50; backdrop-filter: blur(12px); background: rgba(11,18,32,.65); border-bottom:1px solid var(--line)}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:12px 0; gap:12px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800}
+    .logo{width:34px; height:34px; border-radius:12px; background: linear-gradient(145deg, rgba(100,181,255,1), rgba(126,240,214,1)); box-shadow: 0 10px 24px rgba(100,181,255,.18)}
+    nav ul{list-style:none; margin:0; padding:0; display:flex; gap:12px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    nav a{padding:10px 10px; border-radius:10px; color:var(--muted); border:1px solid transparent}
+    nav a:hover{color:var(--text); border-color: var(--line); background: rgba(255,255,255,.04)}
+    .nav-actions{display:flex; gap:10px; align-items:center}
+    /* hero */
+    .hero{padding:44px 0 18px}
+    .hero-wrap{display:grid; grid-template-columns: 1.2fr .8fr; gap:18px; align-items:stretch}
+    .hero h1{font-size:40px; margin:10px 0 12px; line-height:1.2}
+    .hero p{margin:0; color:var(--muted); line-height:1.8}
+    .hero-cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+    .hero-box{padding:18px; border-radius: var(--radius); border:1px solid var(--line); background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03))}
+    .contact-row{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+    .contact-item{display:flex; align-items:center; gap:10px}
+    .icon{width:18px; height:18px; display:inline-block}
+    /* problem */
+    .problems{grid-template-columns: repeat(4, 1fr)}
+    .problem{padding:16px}
+    .problem .i{width:42px; height:42px; border-radius:14px; display:grid; place-items:center; background: rgba(100,181,255,.12); border:1px solid rgba(100,181,255,.22)}
+    .problem p{margin:10px 0 0; color:var(--muted); line-height:1.7}
+    /* service */
+    .two{grid-template-columns: 1fr 1fr}
+    .list{margin:0; padding-left:18px; color:var(--muted); line-height:1.9}
+    .chips{display:flex; gap:8px; flex-wrap:wrap}
+    /* plans */
+    .plans{grid-template-columns: repeat(3, 1fr)}
+    .plan{padding:18px}
+    .price{font-size:30px; font-weight:900; margin:10px 0 6px}
+    .plan ul{margin:12px 0 0; padding-left:18px; color:var(--muted); line-height:1.9}
+    /* flow */
+    .steps{grid-template-columns: repeat(3, 1fr)}
+    .step{padding:18px}
+    .step .no{font-weight:900; color: rgba(126,240,214,.9)}
+    /* message */
+    .message{display:grid; grid-template-columns: 1fr 1fr; gap:16px; align-items:stretch}
+    .avatar{width:84px; height:84px; border-radius:24px; background: rgba(255,255,255,.08); border:1px solid var(--line); display:grid; place-items:center; font-weight:900; color:var(--muted)}
+    /* contact */
+    .contact-grid{grid-template-columns: 1.1fr .9fr}
+    .field{display:flex; flex-direction:column; gap:6px; margin-bottom:12px}
+    input, textarea{
+      width:100%; padding:12px 12px; border-radius:12px; border:1px solid var(--line);
+      background: rgba(255,255,255,.04); color:var(--text); outline:none
+    }
+    textarea{min-height:120px; resize:vertical}
+    .note{color:var(--muted); font-size:12px; line-height:1.7}
+    /* footer */
+    footer{padding:26px 0 36px; border-top:1px solid var(--line); color:var(--muted)}
+    /* mobile */
+    @media (max-width: 980px){
+      .hero-wrap{grid-template-columns:1fr}
+      .problems{grid-template-columns: repeat(2, 1fr)}
+      .plans{grid-template-columns: 1fr}
+      .steps{grid-template-columns: 1fr}
+      .message{grid-template-columns: 1fr}
+      .contact-grid{grid-template-columns: 1fr}
+      nav ul{display:none}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="#top">
+        <span class="logo" aria-hidden="true"></span>
+        <span>米子空き家相談サポートセンター</span>
+      </a>
+      <nav aria-label="メインメニュー">
+        <ul>
+          <li><a href="#about">空き家について</a></li>
+          <li><a href="#service">サービス内容</a></li>
+          <li><a href="#plans">プラン</a></li>
+          <li><a href="#flow">ご利用の流れ</a></li>
+          <li><a href="#message">代表挨拶</a></li>
+          <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn" href="tel:090-0000-0000" title="電話する">
+          <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.7 3.2 3.4 4.9 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.2 1.3.5 2.7.8 4.2.8.7 0 1.2.5 1.2 1.2V21c0 .7-.5 1.2-1.2 1.2C10.5 22.2 1.8 13.5 1.8 3.2 1.8 2.5 2.3 2 3 2h3.4c.7 0 1.2.5 1.2 1.2 0 1.5.3 2.9.8 4.2.1.4 0 .9-.2 1.2L6.6 10.8z" stroke="currentColor" stroke-width="1.6"/></svg>
+          電話
+        </a>
+        <a class="btn primary" href="#contact">無料相談</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-wrap">
+        <div class="hero-box card">
+          <div class="card pad">
+            <span class="pill">
+              <span class="tag">米子・境港・日吉津・南部・伯耆 ほか</span>
+              <span class="small muted">遠方オーナーのご相談も歓迎</span>
+            </span>
+            <h1>米子の空き家のことなら、<br>まずは“相談”から。</h1>
+            <p>
+              「実家が空き家になった」「売却か解体か迷っている」「近隣が心配」など、空き家のお悩みを整理し、
+              必要に応じて売却・解体・活用の専門業者へつなぐ相談窓口です。<br>
+              <span class="small">※契約行為や専門判断は各専門家が対応します。</span>
+            </p>
+
+            <div class="hero-cta">
+              <a class="btn primary" href="#contact">無料相談はこちら</a>
+              <a class="btn" href="#plans">料金プランを見る</a>
+              <a class="btn" href="#service">サービス内容</a>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="contact-row">
+              <div class="contact-item">
+                <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.7 3.2 3.4 4.9 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.2 1.3.5 2.7.8 4.2.8.7 0 1.2.5 1.2 1.2V21c0 .7-.5 1.2-1.2 1.2C10.5 22.2 1.8 13.5 1.8 3.2 1.8 2.5 2.3 2 3 2h3.4c.7 0 1.2.5 1.2 1.2 0 1.5.3 2.9.8 4.2.1.4 0 .9-.2 1.2L6.6 10.8z" stroke="currentColor" stroke-width="1.6"/></svg>
+                <div>
+                  <div class="small muted">お電話</div>
+                  <div><a href="tel:090-0000-0000"><strong>090-0000-0000</strong></a> <span class="small muted">（平日 9:00〜18:00）</span></div>
+                </div>
+              </div>
+              <div class="contact-item">
+                <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.6"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.6"/></svg>
+                <div>
+                  <div class="small muted">メール</div>
+                  <div><a href="mailto:yonago.akiyasodan@gmail.com"><strong>yonago.akiyasodan@gmail.com</strong></a></div>
+                </div>
+              </div>
+              <div class="contact-item">
+                <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M20 12c0 4.4-4 8-8 8-1.2 0-2.3-.2-3.3-.6L4 20l.7-3.7c-.4-1-.7-2.2-.7-3.3 0-4.4 3.6-8 8-8s8 3.6 8 8z" stroke="currentColor" stroke-width="1.6"/></svg>
+                <div>
+                  <div class="small muted">LINE</div>
+                  <div><a href="#contact"><strong>LINEで相談（リンクを後で設定）</strong></a></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <aside class="hero-box card">
+          <div class="card pad">
+            <div class="kicker">Quick Check</div>
+            <h2 class="h2">空き家、こんな状態なら<br>早めの相談が安心です。</h2>
+            <ul class="list">
+              <li>ポストが溢れる／チラシが溜まる</li>
+              <li>庭木・雑草が伸びて近隣が心配</li>
+              <li>雨漏りや窓の破損が不安</li>
+              <li>売却・解体・活用の判断がつかない</li>
+            </ul>
+            <div class="divider"></div>
+            <div class="small muted">初回は「状況整理の相談」から対応します。必要に応じて専門業者へおつなぎします。</div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / PROBLEMS -->
+  <section class="section slim" id="about">
+    <div class="container">
+      <div class="kicker">About</div>
+      <h2 class="h2">空き家について、こんなお悩みありませんか？</h2>
+
+      <div class="grid problems">
+        <div class="card problem">
+          <div class="i" aria-hidden="true">🏠</div>
+          <h3 class="h3">遠方で見に行けない</h3>
+          <p>県外在住・多忙で、状況確認ができない。何から手をつけるべきか分からない。</p>
+        </div>
+        <div class="card problem">
+          <div class="i" aria-hidden="true">🌿</div>
+          <h3 class="h3">庭や不法投棄が心配</h3>
+          <p>雑草・庭木の越境、ゴミ投棄、近隣トラブルが不安。</p>
+        </div>
+        <div class="card problem">
+          <div class="i" aria-hidden="true">📌</div>
+          <h3 class="h3">売却・解体の判断が難しい</h3>
+          <p>費用感や段取りが分からず、決められないまま放置になっている。</p>
+        </div>
+        <div class="card problem">
+          <div class="i" aria-hidden="true">🧩</div>
+          <h3 class="h3">思い出があり手放せない</h3>
+          <p>気持ちの整理がつかず、誰にも相談できない。まずは状況を整理したい。</p>
+        </div>
+      </div>
+
+      <div style="height:14px"></div>
+
+      <div class="card pad">
+        <div class="grid two">
+          <div>
+            <h3 class="h3">お悩みの整理から、解決へ。</h3>
+            <p class="muted" style="margin:0; line-height:1.9">
+              米子空き家相談サポートセンターは、空き家のお悩みを整理し、必要に応じて売却・解体・活用などの専門業者へつなぐ「相談窓口」です。
+              小さな不安でもまずはご相談ください。
+            </p>
+          </div>
+          <div style="display:flex; gap:10px; align-items:center; justify-content:flex-end; flex-wrap:wrap">
+            <a class="btn primary" href="#contact">お問い合わせフォームへ</a>
+            <a class="btn" href="tel:090-0000-0000">電話する</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SERVICE -->
+  <section class="section" id="service">
+    <div class="container">
+      <div class="kicker">Service</div>
+      <h2 class="h2">サービス内容</h2>
+
+      <div class="grid two">
+        <div class="card pad">
+          <h3 class="h3">相談整理（一次窓口）</h3>
+          <ul class="list">
+            <li>現状とご希望をヒアリング（売却／解体／活用／見守り）</li>
+            <li>優先順位と次の打ち手を整理</li>
+            <li>必要に応じて専門家へ接続（不動産・解体・士業など）</li>
+          </ul>
+          <div class="divider"></div>
+          <div class="chips">
+            <span class="tag">相続後の空き家</span>
+            <span class="tag">遠方オーナー</span>
+            <span class="tag">判断整理</span>
+          </div>
+        </div>
+
+        <div class="card pad">
+          <h3 class="h3">簡易管理・定期確認（必要な方）</h3>
+          <ul class="list">
+            <li>外観確認（破損・雨漏り兆候などの目視）</li>
+            <li>ポスト確認（投函物の整理）</li>
+            <li>庭の確認（越境・繁茂・不法投棄の有無）</li>
+            <li>写真付きの簡易報告（メール/LINE）</li>
+          </ul>
+          <div class="divider"></div>
+          <div class="small muted">※詳細点検・工事・契約行為は各専門業者が実施します。</div>
+        </div>
+      </div>
+
+      <div style="height:14px"></div>
+
+      <div class="card pad">
+        <div class="kicker">対応エリア（例）</div>
+        <div style="margin-top:8px" class="muted">米子市｜境港市｜日吉津村｜南部町｜伯耆町｜（必要に応じて周辺地域もご相談）</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANS -->
+  <section class="section" id="plans">
+    <div class="container">
+      <div class="kicker">Plan</div>
+      <h2 class="h2">料金プラン（例）</h2>
+      <p class="muted" style="margin-top:0; line-height:1.8">
+        まずは相談から。管理プランは必要な方のみご案内します。料金は運用しながら調整可能です（ここは後で差し替えOK）。
+      </p>
+
+      <div class="grid plans">
+        <div class="card plan">
+          <span class="tag">ライト</span>
+          <div class="price">¥3,300<span class="small muted">/月（税込）</span></div>
+          <div class="small muted">月1回（外観＋ポスト＋庭の確認）</div>
+          <ul>
+            <li>写真付き簡易レポート</li>
+            <li>不法投棄・繁茂の目視確認</li>
+            <li>相談（メール/LINE）</li>
+          </ul>
+        </div>
+
+        <div class="card plan">
+          <span class="tag">ベーシック</span>
+          <div class="price">¥6,600<span class="small muted">/月（税込）</span></div>
+          <div class="small muted">月1回（＋状況整理サポート）</div>
+          <ul>
+            <li>写真付き簡易レポート</li>
+            <li>意思決定の整理（売却/解体/活用）</li>
+            <li>必要に応じて専門家へ接続</li>
+          </ul>
+        </div>
+
+        <div class="card plan">
+          <span class="tag">プレミアム</span>
+          <div class="price">¥11,000<span class="small muted">/月（税込）</span></div>
+          <div class="small muted">月2回（重点的に見守り）</div>
+          <ul>
+            <li>写真付き簡易レポート（2回）</li>
+            <li>優先対応（相談）</li>
+            <li>オプション手配（草刈り等）</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="height:14px"></div>
+
+      <div class="card pad">
+        <div class="kicker">オプション例</div>
+        <div class="muted" style="margin-top:8px; line-height:1.9">
+          草刈り・剪定｜ハウスクリーニング｜不要品処分｜簡易修繕｜各種業者手配 など（内容によりお見積り）
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOW -->
+  <section class="section" id="flow">
+    <div class="container">
+      <div class="kicker">Flow</div>
+      <h2 class="h2">ご利用の流れ</h2>
+
+      <div class="grid steps">
+        <div class="card step">
+          <div class="no">Step 01</div>
+          <h3 class="h3">お問い合わせ</h3>
+          <p class="muted" style="margin:0; line-height:1.9">電話・メール・LINEでご相談内容をお知らせください。</p>
+        </div>
+        <div class="card step">
+          <div class="no">Step 02</div>
+          <h3 class="h3">ヒアリング／現地確認</h3>
+          <p class="muted" style="margin:0; line-height:1.9">状況を確認し、ご希望（売却/解体/活用/見守り）を整理します。</p>
+        </div>
+        <div class="card step">
+          <div class="no">Step 03</div>
+          <h3 class="h3">ご提案・開始</h3>
+          <p class="muted" style="margin:0; line-height:1.9">必要なプランをご提案し、管理や専門家接続を進めます。</p>
+        </div>
+      </div>
+
+      <div style="height:14px"></div>
+      <div class="card pad">
+        <div class="small muted">※契約書類・工事・売買等は内容に応じて各専門家・業者が対応します。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MESSAGE -->
+  <section class="section" id="message">
+    <div class="container">
+      <div class="kicker">Message</div>
+      <h2 class="h2">代表挨拶</h2>
+
+      <div class="card pad message">
+        <div style="display:flex; gap:14px; align-items:flex-start">
+          <div class="avatar" aria-hidden="true">代表</div>
+          <div>
+            <h3 class="h3" style="margin-top:4px">（お名前を入力）</h3>
+            <p class="muted" style="margin:0; line-height:1.9">
+              少子高齢化や人口減少により、空き家の悩みは年々増えています。一方で「誰に相談すれば良いか分からない」「売却か解体か決められない」など、決断前の不安が放置につながりがちです。<br>
+              米子空き家相談サポートセンターは、まずはお悩みを整理し、必要に応じて適切な専門家へつなぐ“入口”としてお役に立てればと思っています。小さなことでもお気軽にご相談ください。
+            </p>
+          </div>
+        </div>
+
+        <div class="card pad" style="background: rgba(255,255,255,.03); border-radius: var(--radius); border:1px solid var(--line)">
+          <div class="kicker">ご相談のポイント</div>
+          <ul class="list" style="margin:10px 0 0">
+            <li>決めきれない状態でもOK（相談から整理）</li>
+            <li>県外在住の方も歓迎（写真で報告）</li>
+            <li>必要なら専門業者へ接続（売却/解体/活用）</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="kicker">Contact</div>
+      <h2 class="h2">お問い合わせ</h2>
+
+      <div class="grid contact-grid">
+        <div class="card pad">
+          <h3 class="h3">フォーム（GitHub Pages用：メール送信は外部サービス推奨）</h3>
+          <p class="muted" style="margin-top:0; line-height:1.8">
+            GitHub Pagesはサーバーがないため、フォーム送信は <strong>Googleフォーム</strong> や <strong>formsubmit</strong> 等の外部サービスに接続するのが簡単です。<br>
+            ひとまず以下は「見た目だけ」置いています（後でリンク先を設定しましょう）。
+          </p>
+
+          <div class="divider"></div>
+
+          <!-- 見た目用（送信はしない） -->
+          <div class="field">
+            <label class="small muted">お名前</label>
+            <input type="text" placeholder="例）山田 太郎" disabled>
+          </div>
+          <div class="field">
+            <label class="small muted">メール</label>
+            <input type="email" placeholder="example@mail.com" disabled>
+          </div>
+          <div class="field">
+            <label class="small muted">ご相談内容</label>
+            <textarea placeholder="例）実家が空き家になりました。売却か解体か迷っています。" disabled></textarea>
+          </div>
+
+          <a class="btn primary" href="https://forms.gle/XXXXXXXXXXXX" target="_blank" rel="noopener">Googleフォームへ（ここを差し替え）</a>
+          <div class="note" style="margin-top:10px">
+            ※ 上のリンクをあなたのGoogleフォームURLに差し替えてください。<br>
+            ※ もしくは「mailto:」でメール送信導線にしてもOKです。
+          </div>
+        </div>
+
+        <aside class="card pad">
+          <h3 class="h3">直接連絡</h3>
+          <div class="divider"></div>
+          <p class="muted" style="margin:0; line-height:1.9">
+            すぐに状況を整理したい方は、電話・メールでもOKです。
+          </p>
+
+          <div style="height:12px"></div>
+
+          <div class="card pad" style="background: rgba(255,255,255,.03)">
+            <div class="contact-item">
+              <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.7 3.2 3.4 4.9 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.2 1.3.5 2.7.8 4.2.8.7 0 1.2.5 1.2 1.2V21c0 .7-.5 1.2-1.2 1.2C10.5 22.2 1.8 13.5 1.8 3.2 1.8 2.5 2.3 2 3 2h3.4c.7 0 1.2.5 1.2 1.2 0 1.5.3 2.9.8 4.2.1.4 0 .9-.2 1.2L6.6 10.8z" stroke="currentColor" stroke-width="1.6"/></svg>
+              <div>
+                <div class="small muted">電話</div>
+                <div><a href="tel:090-0000-0000"><strong>090-0000-0000</strong></a></div>
+              </div>
+            </div>
+            <div style="height:10px"></div>
+            <div class="contact-item">
+              <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.6"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.6"/></svg>
+              <div>
+                <div class="small muted">メール</div>
+                <div><a href="mailto:yonago.akiyasodan@gmail.com"><strong>yonago.akiyasodan@gmail.com</strong></a></div>
+              </div>
+            </div>
+            <div style="height:10px"></div>
+            <div class="contact-item">
+              <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M20 12c0 4.4-4 8-8 8-1.2 0-2.3-.2-3.3-.6L4 20l.7-3.7c-.4-1-.7-2.2-.7-3.3 0-4.4 3.6-8 8-8s8 3.6 8 8z" stroke="currentColor" stroke-width="1.6"/></svg>
+              <div>
+                <div class="small muted">LINE</div>
+                <div><strong>（LINEリンクをここに設定）</strong></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:14px"></div>
+          <div class="note">
+            ※ 住所を出したくない場合、Googleビジネスプロフィールは「サービス提供地域」を設定して住所非公開でも運用できます。
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div><strong>米子空き家相談サポートセンター</strong></div>
+    <div class="small">対応エリア：米子市｜境港市｜日吉津村｜南部町｜伯耆町 ほか</div>
+    <div class="small">© <span id="y"></span> Yonago Akiya Support Center</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
