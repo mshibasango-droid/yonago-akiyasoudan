@@ -59,12 +59,17 @@
 
     /* hero */
     .hero{padding:26px 0 10px}
-    .hero-wrap{display:grid; grid-template-columns: 1.2fr .8fr; gap:14px; align-items:stretch}
-    .hero p{margin:0; line-height:1.9}
-    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
-    .points{margin:10px 0 0; padding-left:18px; line-height:1.9; color:var(--muted)}
-    .notice{background:#fffbeb; border:1px solid #fde68a; color:#92400e; border-radius:12px; padding:10px 12px; font-size:13px; line-height:1.7}
-
+    /* hero（ヒーロー部分だけ背景写真） */
+.hero{
+  position: relative;
+  padding: 26px 0 10px;
+  background-image:
+    linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.86)),
+    url("images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
     /* blocks */
     .problems{grid-template-columns: repeat(4, 1fr)}
     .box{padding:16px}
