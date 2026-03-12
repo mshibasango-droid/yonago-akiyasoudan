@@ -7,7 +7,6 @@
   <meta name="description" content="米子市周辺の空き家のお悩みを整理し、必要に応じて解体・売却・活用の専門業者へつなぐ相談窓口。遠方オーナーの見守り（写真報告）にも対応。" />
   <meta name="robots" content="index,follow" />
 
-  <!-- OGP (任意) -->
   <meta property="og:title" content="米子空き家相談サポートセンター" />
   <meta property="og:description" content="空き家の悩みを整理して、次の一手を一緒に決める相談窓口です。" />
   <meta property="og:type" content="website" />
@@ -20,91 +19,324 @@
       --muted:#6b7280;
       --line:#e5e7eb;
       --card:#ffffff;
-      --accent:#2563eb;   /* 青 */
-      --accent2:#10b981;  /* 緑 */
+      --accent:#2563eb;
+      --accent2:#10b981;
+      --accent3:#eff6ff;
       --shadow:0 10px 30px rgba(17,24,39,.08);
       --radius:16px;
       --max:1100px;
     }
+
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family: system-ui, -apple-system, "Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text)}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      padding:0;
+      font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;
+      background:linear-gradient(180deg,var(--bg),var(--bg2));
+      color:var(--text);
+    }
+
     a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
     .container{max-width:var(--max); margin:0 auto; padding:0 16px}
-    .btn{display:inline-flex; gap:10px; align-items:center; justify-content:center; padding:12px 14px; border-radius:12px; border:1px solid var(--line); background:#fff; cursor:pointer; font-weight:700}
+    .grid{display:grid; gap:16px}
+    .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow)}
+    .pad{padding:22px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+    .section{padding:56px 0}
+    .divider{height:1px; background:var(--line); margin:16px 0}
+
+    .h1{font-size:36px; line-height:1.25; margin:12px 0 14px}
+    .h2{font-size:26px; margin:0 0 12px}
+    .h3{font-size:18px; margin:0 0 8px}
+
+    .btn{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      justify-content:center;
+      padding:13px 16px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#fff;
+      cursor:pointer;
+      font-weight:700;
+      transition:.2s ease;
+      min-height:46px;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn:active{transform:translateY(1px)}
     .btn.primary{background:var(--accent); color:#fff; border-color:transparent}
     .btn.green{background:var(--accent2); color:#fff; border-color:transparent}
     .btn.ghost{background:transparent}
-    .btn:active{transform:translateY(1px)}
-    .tag{display:inline-block; font-size:12px; padding:6px 10px; border-radius:999px; background:#eef2ff; color:#1e40af; border:1px solid #dbeafe}
-    .grid{display:grid; gap:14px}
-    .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow)}
-    .pad{padding:18px}
-    .muted{color:var(--muted)}
-    .h1{font-size:34px; line-height:1.2; margin:10px 0 12px}
-    .h2{font-size:24px; margin:0 0 10px}
-    .h3{font-size:18px; margin:0 0 8px}
-    .small{font-size:13px}
-    .section{padding:54px 0}
-    .divider{height:1px; background:var(--line); margin:14px 0}
+
+    .tag{
+      display:inline-block;
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:#eef2ff;
+      color:#1e40af;
+      border:1px solid #dbeafe;
+      font-weight:700;
+    }
+
+    .list{
+      margin:0;
+      padding-left:18px;
+      line-height:1.9;
+      color:var(--muted);
+    }
 
     /* header */
-    header{position:sticky; top:0; z-index:60; background:rgba(255,255,255,.86); backdrop-filter: blur(10px); border-bottom:1px solid var(--line)}
-    .nav{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 0}
-    .brand{display:flex; align-items:center; gap:10px; font-weight:900}
-    .logo{width:34px; height:34px; border-radius:12px; background:linear-gradient(145deg,#2563eb,#60a5fa); display:inline-block}
-    nav ul{list-style:none; margin:0; padding:0; display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
-    nav a{padding:9px 10px; border-radius:10px; color:var(--muted)}
-    nav a:hover{background:#f3f4f6; color:var(--text)}
-    .nav-actions{display:flex; gap:10px; align-items:center}
+    header{
+      position:sticky;
+      top:0;
+      z-index:60;
+      background:rgba(255,255,255,.88);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:10px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      white-space:nowrap;
+    }
+    .logo{
+      width:34px;
+      height:34px;
+      border-radius:12px;
+      background:linear-gradient(145deg,#2563eb,#60a5fa);
+      display:inline-block;
+      flex:0 0 auto;
+    }
+    nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    nav a{
+      padding:9px 10px;
+      border-radius:10px;
+      color:var(--muted);
+      font-weight:600;
+    }
+    nav a:hover{
+      background:#f3f4f6;
+      color:var(--text);
+    }
+    .nav-actions{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
 
     /* hero */
-    .hero{padding:26px 0 10px}
-    /* hero（ヒーロー部分だけ背景写真） */
-.hero{
-  position: relative;
-  padding: 26px 0 10px;
-  background-image:
-    linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.86)),
-    url("images/hero.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-    /* blocks */
-    .problems{grid-template-columns: repeat(4, 1fr)}
-    .box{padding:16px}
-    .icon{width:40px;height:40px;border-radius:14px;background:#eff6ff;border:1px solid #dbeafe;display:grid;place-items:center;font-weight:900;color:#1e40af}
-    .box p{margin:10px 0 0; color:var(--muted); line-height:1.8}
+    .hero{
+      position:relative;
+      padding:28px 0 18px;
+      background-image:
+        linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.88)),
+        url("images/images/hero.jpg");
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+    }
 
-    .two{grid-template-columns: 1fr 1fr}
-    .list{margin:0; padding-left:18px; line-height:1.9; color:var(--muted)}
+    .hero-wrap{
+      display:grid;
+      grid-template-columns:1.35fr .85fr;
+      gap:16px;
+      align-items:stretch;
+    }
 
-    /* plans */
-    .plans{grid-template-columns: repeat(3, 1fr)}
-    .price{font-size:28px; font-weight:900; margin:10px 0 4px}
-    .plan ul{margin:10px 0 0; padding-left:18px; line-height:1.9; color:var(--muted)}
+    .hero-lead{
+      font-size:16px;
+      line-height:1.95;
+      margin:0;
+    }
 
-    /* FAQ */
-    details{border:1px solid var(--line); border-radius:12px; padding:12px 12px; background:#fff}
-    summary{cursor:pointer; font-weight:800}
-    details p{margin:10px 0 0; color:var(--muted); line-height:1.9}
+    .cta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:20px;
+    }
 
-    /* floating bar (mobile strong) */
+    .points{
+      margin:18px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+      line-height:1.9;
+    }
+
+    .notice{
+      margin-top:16px;
+      padding:12px 14px;
+      border-radius:12px;
+      background:#f9fafb;
+      border:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.8;
+    }
+
+    .support-mini{
+      grid-template-columns:repeat(4,1fr);
+      margin-top:16px;
+    }
+    .support-mini .mini{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px;
+      text-align:center;
+      font-size:14px;
+      font-weight:700;
+      box-shadow:var(--shadow);
+    }
+
+    /* sections */
+    .problems{grid-template-columns:repeat(4,1fr)}
+    .box{padding:18px}
+    .icon{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      background:#eff6ff;
+      border:1px solid #dbeafe;
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      color:#1e40af;
+      font-size:18px;
+    }
+    .box p{
+      margin:10px 0 0;
+      color:var(--muted);
+      line-height:1.8;
+    }
+
+    .two{grid-template-columns:1fr 1fr}
+
+    .plans{grid-template-columns:repeat(3,1fr)}
+    .price{
+      font-size:30px;
+      font-weight:900;
+      margin:10px 0 4px;
+    }
+    .plan{
+      margin:10px 0 0;
+      padding-left:18px;
+      line-height:1.9;
+      color:var(--muted);
+    }
+
+    .service-note{
+      background:var(--accent3);
+      border:1px solid #dbeafe;
+      color:#1e3a8a;
+      border-radius:14px;
+      padding:14px 16px;
+      line-height:1.8;
+      font-size:14px;
+    }
+
+    /* faq */
+    details{
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:12px;
+      background:#fff;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:800;
+      list-style:none;
+    }
+    summary::-webkit-details-marker{display:none}
+    details p{
+      margin:10px 0 0;
+      color:var(--muted);
+      line-height:1.9;
+    }
+
+    /* contact */
+    .contact-box{
+      background:linear-gradient(180deg,#ffffff,#f8fafc);
+    }
+
+    /* footer */
+    footer{
+      padding:28px 0 74px;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+      background:#fff;
+    }
+
+    /* mobile fixed bar */
     .fixedbar{
-      position:fixed; left:0; right:0; bottom:0; z-index:80;
-      display:none; gap:10px; padding:10px; background:rgba(255,255,255,.92); border-top:1px solid var(--line); backdrop-filter: blur(10px)
+      position:fixed;
+      left:0;
+      right:0;
+      bottom:0;
+      z-index:80;
+      display:none;
+      gap:10px;
+      padding:10px;
+      background:rgba(255,255,255,.94);
+      border-top:1px solid var(--line);
+      backdrop-filter:blur(10px);
     }
     .fixedbar a{flex:1}
-    footer{padding:26px 0 70px; color:var(--muted); border-top:1px solid var(--line); background:#fff}
 
     @media (max-width: 980px){
       .hero-wrap{grid-template-columns:1fr}
-      .problems{grid-template-columns: repeat(2, 1fr)}
-      .two{grid-template-columns: 1fr}
-      .plans{grid-template-columns: 1fr}
+      .support-mini{grid-template-columns:repeat(2,1fr)}
+      .problems{grid-template-columns:repeat(2,1fr)}
+      .two{grid-template-columns:1fr}
+      .plans{grid-template-columns:1fr}
       nav ul{display:none}
       .fixedbar{display:flex}
       footer{padding-bottom:110px}
+    }
+
+    @media (max-width: 640px){
+      .h1{font-size:30px}
+      .h2{font-size:22px}
+      .pad{padding:18px}
+      .cta{
+        flex-direction:column;
+      }
+      .cta .btn{
+        width:100%;
+      }
+      .support-mini{grid-template-columns:1fr 1fr}
+      .problems{grid-template-columns:1fr}
+      .brand span:last-child{
+        font-size:14px;
+        white-space:normal;
+        line-height:1.3;
+      }
+      .nav-actions .btn.ghost{
+        display:none;
+      }
     }
   </style>
 </head>
@@ -113,7 +345,7 @@
 <header>
   <div class="container">
     <div class="nav">
-      <a class="brand" href="#top">
+      <a class="brand" href="#top" aria-label="トップへ戻る">
         <span class="logo" aria-hidden="true"></span>
         <span>米子空き家相談サポートセンター</span>
       </a>
@@ -144,10 +376,12 @@
         <div class="card pad">
           <span class="tag">米子・境港・日吉津・南部・伯耆 ほか（周辺も相談可）</span>
           <h1 class="h1">空き家の悩みを整理して、<br>次の一手を一緒に決めます。</h1>
-          <p class="muted">
+
+          <p class="hero-lead muted">
             「実家が空き家になった」「売る？解体？活用？判断がつかない」「遠方で見に行けない」など、
             <strong>決めきれない状態</strong>でも大丈夫です。<br>
-            まずは状況を整理し、必要に応じて<strong>不動産・解体・各専門家</strong>へつなぎます。
+            まずは状況を整理し、必要に応じて
+            <strong>不動産・解体・各専門家</strong>へつなぎます。
           </p>
 
           <div class="cta">
@@ -175,17 +409,33 @@
             <li>雨漏りや窓の破損が不安</li>
             <li>相続後に放置になっている</li>
           </ul>
+
           <div class="divider"></div>
-          <div class="small muted">
+
+          <div class="small muted" style="line-height:1.8">
             「何からやればいいか分からない」状態が一番多いです。まずは相談で整理しましょう。
           </div>
+
+          <div class="divider"></div>
+
+          <div class="service-note">
+            相談のみでも大丈夫です。<br>
+            まず現状整理 → 必要なら見守りや専門家接続、という流れで進められます。
+          </div>
         </aside>
+      </div>
+
+      <div class="grid support-mini">
+        <div class="mini">相談から始められる</div>
+        <div class="mini">遠方オーナー対応</div>
+        <div class="mini">写真報告あり</div>
+        <div class="mini">必要時に専門家連携</div>
       </div>
     </div>
   </section>
 
   <!-- PROBLEMS -->
-  <section class="section" style="padding-top:24px">
+  <section class="section" style="padding-top:28px">
     <div class="container">
       <h2 class="h2">よくあるお悩み</h2>
       <div class="grid problems">
@@ -217,6 +467,7 @@
   <section class="section" id="service">
     <div class="container">
       <h2 class="h2">サービス内容</h2>
+
       <div class="grid two">
         <div class="card pad">
           <h3 class="h3">① 相談整理（一次窓口）</h3>
@@ -226,6 +477,7 @@
             <li>必要に応じて専門家へ接続（不動産・解体・士業等）</li>
           </ul>
         </div>
+
         <div class="card pad">
           <h3 class="h3">② 簡易管理・定期確認（必要な方）</h3>
           <ul class="list">
@@ -238,6 +490,7 @@
       </div>
 
       <div class="divider"></div>
+
       <div class="card pad">
         <h3 class="h3">対応エリア</h3>
         <div class="muted" style="line-height:1.9">
@@ -290,6 +543,7 @@
       </div>
 
       <div class="divider"></div>
+
       <div class="card pad">
         <h3 class="h3">オプション例</h3>
         <div class="muted" style="line-height:1.9">
@@ -303,16 +557,27 @@
   <section class="section" id="flow">
     <div class="container">
       <h2 class="h2">ご利用の流れ</h2>
+
       <div class="grid two">
         <div class="card pad">
           <h3 class="h3">Step 1：お問い合わせ</h3>
-          <p class="muted" style="margin:0; line-height:1.9">電話・LINE・フォームでOK。状況だけでも教えてください。</p>
+          <p class="muted" style="margin:0; line-height:1.9">
+            電話・LINE・フォームでOK。状況だけでも教えてください。
+          </p>
+
           <div class="divider"></div>
+
           <h3 class="h3">Step 2：ヒアリング／必要なら現地確認</h3>
-          <p class="muted" style="margin:0; line-height:1.9">希望（売却/解体/活用/見守り）を整理します。</p>
+          <p class="muted" style="margin:0; line-height:1.9">
+            希望（売却／解体／活用／見守り）を整理します。
+          </p>
+
           <div class="divider"></div>
+
           <h3 class="h3">Step 3：提案・開始</h3>
-          <p class="muted" style="margin:0; line-height:1.9">必要なプランをご提案し、専門業者へ接続します。</p>
+          <p class="muted" style="margin:0; line-height:1.9">
+            必要なプランをご提案し、必要に応じて専門業者へ接続します。
+          </p>
         </div>
 
         <div class="card pad" id="faq">
@@ -320,7 +585,7 @@
 
           <details>
             <summary>相談だけでも大丈夫ですか？</summary>
-            <p>大丈夫です。多くの方は「売る/解体/管理」以前に、状況整理から始まります。</p>
+            <p>大丈夫です。多くの方は「売る／解体／管理」以前に、状況整理から始まります。</p>
           </details>
 
           <div style="height:10px"></div>
@@ -352,18 +617,23 @@
   <section class="section" id="contact">
     <div class="container">
       <h2 class="h2">無料相談</h2>
+
       <div class="grid two">
-        <div class="card pad">
+        <div class="card pad contact-box">
           <h3 class="h3">まずはフォームでOK（おすすめ）</h3>
           <p class="muted" style="margin-top:0; line-height:1.9">
-            GitHub Pagesはサーバーがないため、フォーム送信は <strong>Googleフォーム</strong> が確実です。
+            GitHub Pagesはサーバーがないため、フォーム送信は
+            <strong>Googleフォーム</strong>が確実です。
             下のボタンのURLをあなたのGoogleフォームURLに差し替えてください。
           </p>
+
           <div class="cta">
             <a class="btn primary" href="https://forms.gle/XXXXXXXXXXXX" target="_blank" rel="noopener">Googleフォームで相談する</a>
             <a class="btn green" href="https://line.me/R/ti/p/XXXXXXXX" target="_blank" rel="noopener">LINEで相談</a>
           </div>
+
           <div class="divider"></div>
+
           <div class="small muted">
             ※ 返信のため、連絡先（メール or 電話）をフォームにご記入ください。
           </div>
@@ -372,17 +642,22 @@
         <aside class="card pad">
           <h3 class="h3">電話・メール</h3>
           <div class="divider"></div>
+
           <p class="muted" style="margin:0; line-height:1.9">
-            急ぎの方は電話でもOKです。
+            急ぎの方は電話でもOKです。折り返しになる場合があります。
           </p>
+
           <div style="height:12px"></div>
+
           <div class="cta">
             <a class="btn" href="tel:090-0000-0000">📞 090-0000-0000</a>
-            <a class="btn" href="mailto:yonago.akiyasodan@gmail.com">✉️ メール</a>
+            <a class="btn" href="mailto:yonago.akiyasodan@gmail.com">✉️ メールする</a>
           </div>
+
           <div class="divider"></div>
+
           <div class="small muted">
-            受付目安：平日 9:00〜18:00（折り返し対応）
+            受付目安：平日 9:00〜18:00
           </div>
         </aside>
       </div>
@@ -401,6 +676,7 @@
   <div class="container">
     <div><strong>米子空き家相談サポートセンター</strong></div>
     <div class="small">対応エリア：米子市｜境港市｜日吉津村｜南部町｜伯耆町 ほか</div>
+    <div class="small">相談窓口として現状整理や見守りを行い、必要に応じて専門家へおつなぎします。</div>
     <div class="small">© <span id="y"></span> Yonago Akiya Support Center</div>
   </div>
 </footer>
